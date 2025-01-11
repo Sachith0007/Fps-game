@@ -73,5 +73,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         lastPosition = gameObject.transform.position;
+
+        //-------------------------------------------debugging code for ground layer
+
+
+        // Grounded check
+        isGrounded = Physics.CheckSphere(groundcheck.position, groundDistance, groundMask);
+
+        // Add this line to debug the value of isGrounded
+        Debug.Log("IsGrounded: " + isGrounded);
+
+        // Resetting the default velocity
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
     }
-}// comment
+}
